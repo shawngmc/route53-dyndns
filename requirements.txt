@@ -1,2 +1,2 @@
 boto
-docker
+get-docker-secret
