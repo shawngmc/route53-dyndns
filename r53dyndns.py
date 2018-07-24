@@ -2,6 +2,7 @@
 """Updates a Route53 hosted A alias record with the current ip of the system.
 """
 import dns.resolver
+import docker
 import boto.route53
 import logging
 import os
@@ -16,6 +17,8 @@ parser = OptionParser()
 parser.add_option('-R', '--record', type='string', dest='record_to_update', help='The A record to update.')
 parser.add_option('-v', '--verbose', dest='verbose', default=False, help='Enable Verbose Output.', action='store_true')
 (options, args) = parser.parse_args()
+
+dockerclient = docker.from_env()
 
 if options.record_to_update is None:
     logging.error('Please specify an A record with the -R switch.')
@@ -38,7 +41,9 @@ zone_to_update = '.'.join(record_to_update.split('.')[-2:])
 
 try:
     socket.inet_aton(current_ip)
-    conn = boto.route53.connect_to_region(os.getenv('AWS_CONNECTION_REGION', 'us-east-1'))
+    access_key = dockerclient.secrets.get('route53_access_key').attrs
+    secret_key = dockerclient.secrets.get('route53_secret_key').attrs
+    conn = boto.route53.Route53Connection(access_key, secret_key)
     zone = conn.get_zone(zone_to_update)
     for record in zone.get_records():
         if search(r'<Record:' + record_to_update, str(record)):
