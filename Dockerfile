@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 LABEL maintainer="shawngmc@gmail.com"
-LABEL fork="bshaw/route53-dyndns"
+LABEL forked-from="bshaw/route53-dyndns"
 
 LABEL org.label-schema.build-date="2018-07-24T23:00:00.00Z"
 LABEL org.label-schema.name = "route53-dyndns"
