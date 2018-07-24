@@ -1,8 +1,8 @@
 # Amazon Route53 Dynamic DNS Tool
-A simple dynamic DNS service for Route53.
+A simple dynamic DNS service for Route53, now with docker swarm support!
 
 ## Retrieving your external IP
-This service performs a DNS query to retrieve your IP address from an OpenDNS resolver. This method arguably faster and more reliable than using an http(s) service.
+This service performs a DNS query to retrieve your IP address from an OpenDNS resolver. This method is arguably faster and more reliable than using an http(s) service.
 
 Similar functionality could be done via the shell using dig: `dig +short myip.opendns.com @resolver1.opendns.com;`
 
@@ -27,6 +27,8 @@ docker run -d \
 * `ROUTE53_UPDATE_FREQUENCY` - The frequency (in seconds) to check for updates. Unless you have very specific needs, consider using a very large value here.
 
 ## Credit
+This is a fork of:
+[bshaw/route53-dyndns](https://github.com/bshaw/route53-dyndns)
 Heavily influenced by:
 * [JacobSanford/docker-route53-dyndns](https://github.com/JacobSanford/docker-route53-dyndns)
 * [JacobSanford/route-53-dyndns](https://github.com/JacobSanford/route-53-dyndns)
