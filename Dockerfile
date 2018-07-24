@@ -6,7 +6,8 @@ RUN apk add --update \
     && rm -rf /var/cache/apk/* \
     && pip install \
         boto \
-        dnspython
+        dnspython \
+        docker
 
 COPY r53dyndns.py /usr/local/bin/r53dyndns.py
 COPY run.sh /run.sh
