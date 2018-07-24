@@ -31,7 +31,8 @@ secrets:
       name: route53_access_key
   route53_secret_key:
     external:
-      name: route53_secret_key```
+      name: route53_secret_key
+```
 
 ## CLI Usage
 ```bash
