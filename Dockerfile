@@ -7,7 +7,7 @@ RUN apk add --update \
     && pip install \
         boto \
         dnspython \
-        docker
+        get-docker-secret
 
 COPY r53dyndns.py /usr/local/bin/r53dyndns.py
 COPY run.sh /run.sh
