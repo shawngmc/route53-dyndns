@@ -7,7 +7,7 @@ This service performs a DNS query to retrieve your IP address from an OpenDNS re
 Similar functionality could be done via the shell using dig: `dig +short myip.opendns.com @resolver1.opendns.com;`
 
 ## Docker Compose / Swarm Usage
-version: "3.5"
+```version: "3.5"
 services:
     route53-dyndns:
         container_name: route53-dyndns
@@ -31,7 +31,7 @@ secrets:
       name: route53_access_key
   route53_secret_key:
     external:
-      name: route53_secret_key
+      name: route53_secret_key```
 
 ## CLI Usage
 ```bash
