@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM alpine:latest
 
 LABEL maintainer="shawngmc@gmail.com"
 LABEL forked-from="bshaw/route53-dyndns"
@@ -13,7 +13,7 @@ LABEL org.label-schema.schema-version = "1.0"
 LABEL org.label-schema.version = "1.1"
 
 RUN addgroup aws \
-    && adduser -G aws awsuser
+    && adduser -D -G aws awsuser
 USER awsuser
 
 RUN apk add --update \
