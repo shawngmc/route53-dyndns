@@ -12,8 +12,8 @@ LABEL org.label-schema.vendor = "Shawn McNaughton"
 LABEL org.label-schema.schema-version = "1.0"
 LABEL org.label-schema.version = "1.1"
 
-RUN groupadd -r aws \
-    && useradd --no-log-init -r -g aws awsuser
+RUN addgroup aws \
+    && adduser -G aws awsuser
 USER awsuser
 
 RUN apk add --update \
