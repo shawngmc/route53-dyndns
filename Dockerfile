@@ -12,10 +12,6 @@ LABEL org.label-schema.vendor = "Shawn McNaughton"
 LABEL org.label-schema.schema-version = "1.0"
 LABEL org.label-schema.version = "1.1"
 
-RUN addgroup aws \
-    && adduser -D -G aws awsuser
-USER awsuser
-
 RUN apk add --update \
         python \
         py-pip \
@@ -24,6 +20,10 @@ RUN apk add --update \
         boto \
         dnspython \
         get-docker-secret
+
+RUN addgroup aws \
+    && adduser -D -G aws awsuser
+USER awsuser
 
 COPY r53dyndns.py /usr/local/bin/r53dyndns.py
 COPY run.sh /run.sh
