@@ -30,4 +30,4 @@ COPY r53dyndns.py /usr/local/bin/r53dyndns.py
 COPY run.sh /run.sh
 
 ENTRYPOINT ["/run.sh"]
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=1 CMD [ "pgrep r53dyndns.py" ]
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=1 CMD [ "/usr/bin/pgrep r53dyndns.py" ]
