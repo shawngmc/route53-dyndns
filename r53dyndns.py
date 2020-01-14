@@ -43,16 +43,19 @@ def checkIPChange():
         secret_key = get_docker_secret('route53_secret_key')
         conn = boto.route53.Route53Connection(access_key, secret_key)
         zone = conn.get_zone(zone_to_update)
+        found = False
         for record in zone.get_records():
             if search(r'<Record:' + record_to_update, str(record)):
+                found = True
                 if current_ip in record.to_print():
                     logging.info('Record IP matches, doing nothing.')
                 else:
                     logging.info('IP does not match, update needed.')
                     zone.delete_a(record_to_update)
                     zone.add_a(record_to_update, current_ip)
-        logging.info('Record not found, add needed')
-        zone.add_a(record_to_update, current_ip)
+        if found = False:
+            logging.info('Record not found, add needed')
+            zone.add_a(record_to_update, current_ip)
     except socket.error as e:
         logging.error(repr(e))
 
