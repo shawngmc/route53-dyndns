@@ -15,6 +15,7 @@ LABEL org.label-schema.version = "1.1"
 RUN apk add --update \
         python \
         py-pip \
+        procps \
     && rm -rf /var/cache/apk/* \
     && pip install \
         boto \
