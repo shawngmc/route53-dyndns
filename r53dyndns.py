@@ -53,7 +53,7 @@ def checkIPChange():
                     logging.info('IP does not match, update needed.')
                     zone.delete_a(record_to_update)
                     zone.add_a(record_to_update, current_ip)
-        if found = False:
+        if found == False:
             logging.info('Record not found, add needed')
             zone.add_a(record_to_update, current_ip)
     except socket.error as e:
